@@ -8,6 +8,7 @@ import { UserComponent } from './user/user.component';
 import { LoginComponent } from './login/login.component';
 import {LoginService} from './login.service';
 import  {ShopService} from './shop.service';
+import { RegisterComponent } from './register/register.component';
 
 const myRoutes : Routes = [{
   path : 'login',component : LoginComponent
@@ -15,6 +16,8 @@ const myRoutes : Routes = [{
   path : 'shops',component : ShopComponent
 },{
   path : 'shop/:username', component : UserComponent
+},{
+    path : 'register',component : RegisterComponent
 },{
   path : '', redirectTo : '/', pathMatch : 'full'
 },];
@@ -26,6 +29,7 @@ const myRoutes : Routes = [{
     ShopComponent,
     UserComponent,
     LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
