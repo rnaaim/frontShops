@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LoginService} from '../login.service';
+import {FormsModule} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,11 +9,22 @@ import {LoginService} from '../login.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    username : string;
+    password : string;
 
-  constructor( private authService : LoginService) { }
+  constructor( private authService : LoginService, private  router : Router) { }
+
+  login(){
+      //console.log(this.username);
+      this.authService.login(this.username,this.password).subscribe(data=>{
+          console.log(data);
+      this.router.navigate(['/shops']);
+      });
+      console.log("Yes it works");
+  }
 
   ngOnInit() {
-     this.authService.login('rachid','rachid');
+
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {ShopService} from '../shop.service';
+import {LoginService} from '../login.service';
 
 @Component({
   selector: 'app-user',
@@ -6,8 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+    userShops = [];
+    constructor( private shopService : ShopService,private loginService : LoginService) {
 
-  constructor() { }
+        this.shopService.getShops().subscribe(data=> {
+            this.userShops = data['result'];
+            console.log(this.userShops);
+        });}
 
   ngOnInit() {
   }

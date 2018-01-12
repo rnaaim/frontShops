@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {Routes,RouterModule} from '@angular/router';
-
+import { FormsModule }   from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ShopComponent } from './shop/shop.component';
 import { UserComponent } from './user/user.component';
@@ -10,6 +10,8 @@ import {LoginService} from './login.service';
 import  {ShopService} from './shop.service';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
+import {TokenInterceptor} from './login/token.interceptor';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 const myRoutes : Routes = [{
   path : 'login',component : LoginComponent
@@ -35,9 +37,10 @@ const myRoutes : Routes = [{
   imports: [
     BrowserModule,
     RouterModule.forRoot(myRoutes),
-      HttpClientModule
+      HttpClientModule,FormsModule
   ],
-  providers: [LoginService, ShopService],
+  providers: [LoginService, ShopService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
