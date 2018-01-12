@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import {LoginService} from './login.service';
 import  {ShopService} from './shop.service';
 import { RegisterComponent } from './register/register.component';
+import {HttpClientModule} from '@angular/common/http';
 
 const myRoutes : Routes = [{
   path : 'login',component : LoginComponent
@@ -33,7 +34,8 @@ const myRoutes : Routes = [{
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(myRoutes)
+    RouterModule.forRoot(myRoutes),
+      HttpClientModule
   ],
   providers: [LoginService, ShopService],
   bootstrap: [AppComponent]
