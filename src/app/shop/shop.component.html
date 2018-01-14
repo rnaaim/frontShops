@@ -4,7 +4,8 @@
       <img src="{{shop['picture']}}" alt="" style="width:100%">
       <div class="caption center">
         <h4>{{shop['name']}}</h4>
-        <p class="text-center" style="width:100%"><a href="#" class="btn btn-info btn-lg" role="button">Like</a> <a href="#" class="btn btn-default btn-lg" role="button">Dislike</a></p>
+
+        <p class="text-center" style="width:100%"><a (click)= "like(shop['id'])" class="btn btn-info btn-lg" role="button">Like</a> <a href="#" class="btn btn-default btn-lg" role="button">Dislike</a></p>
       </div>
     </div>
   </div>

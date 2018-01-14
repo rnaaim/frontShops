@@ -11,16 +11,16 @@ import {LoginService} from '../login.service';
 })
 export class ShopComponent implements OnInit {
    myshops = [];
-  constructor( private shopService : ShopService,private loginService : LoginService) {
+  constructor( private shopService : ShopService) {
 
       this.shopService.getShops().subscribe(data=> {
           this.myshops = data['result'];
   });}
 
-  logout(){
-      this.loginService.logout();
-  }
 
+   like(s){
+      this.shopService.likeShop(s);
+   }
 
   ngOnInit() {
     }

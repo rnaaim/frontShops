@@ -11,7 +11,7 @@ export class UserComponent implements OnInit {
     userShops = [];
     constructor( private shopService : ShopService,private loginService : LoginService) {
 
-        this.shopService.getShops().subscribe(data=> {
+        this.shopService.getUserShops().subscribe(data=> {
             this.userShops = data['result'];
             console.log(this.userShops);
         });}

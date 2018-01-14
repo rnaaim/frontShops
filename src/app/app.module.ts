@@ -10,7 +10,6 @@ import {LoginService} from './login.service';
 import  {ShopService} from './shop.service';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
-import {TokenInterceptor} from './login/token.interceptor';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 
 const myRoutes : Routes = [{
@@ -18,7 +17,7 @@ const myRoutes : Routes = [{
 },{
   path : 'shops',component : ShopComponent
 },{
-  path : 'shop/:username', component : UserComponent
+  path : 'user/shops', component : UserComponent
 },{
     path : 'register',component : RegisterComponent
 },{
