@@ -11,13 +11,15 @@ import  {ShopService} from './shop.service';
 import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {Myguard} from './authGuard';
 
 const myRoutes : Routes = [{
   path : 'login',component : LoginComponent
 },{
-  path : 'shops',component : ShopComponent
+  path : 'shops',component : ShopComponent,
+    canActivate : [Myguard]
 },{
-  path : 'user/shops', component : UserComponent
+  path : 'user/shops', component : UserComponent,canActivate : [Myguard]
 },{
     path : 'register',component : RegisterComponent
 },{
@@ -38,7 +40,7 @@ const myRoutes : Routes = [{
     RouterModule.forRoot(myRoutes),
       HttpClientModule,FormsModule
   ],
-  providers: [LoginService, ShopService,
+  providers: [LoginService, ShopService, Myguard
   ],
   bootstrap: [AppComponent]
 })

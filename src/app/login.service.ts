@@ -8,8 +8,8 @@ export class LoginService {
 
     public token ;
     constructor(private http: HttpClient) {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        this.token = currentUser && currentUser.token
+        const loggedUser = JSON.parse(localStorage.getItem('currentUser'));
+        this.token = loggedUser && loggedUser.token
     }
 
     login(username: string, password: string): Observable<Boolean> {
@@ -21,7 +21,7 @@ export class LoginService {
           if(res['token']){
               this.token = res['token'];
               console.log(this.token);
-              localStorage.setItem(username,JSON.stringify({username : username, token: this.token}));
+              localStorage.setItem('loggedUser',JSON.stringify({username : username, token: this.token}));
               localStorage.setItem('refreshToken',this.token);
 
               return true;
@@ -44,8 +44,18 @@ export class LoginService {
 
       }
 
-    logout(){
-        localStorage.setItem('refreshToken',null);
+    logout() : void{
+        this.token = null;
+        localStorage.removeItem('refreshToken');
+        localStorage.removeItem('loggedUser');
+    }
+
+    isLoggedIn() : boolean {
+        if((localStorage.getItem('loggedUser'))){
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
