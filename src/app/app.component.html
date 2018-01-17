@@ -1,9 +1,14 @@
 <div class="jumbotron text-center">
     <h1>Welcome to the ultimate guide for shops in the entire galaxy</h1>
-   <nav > <a style="text-align: right" routerLink="/login" routerLinkActive="active">Login</a>
-       <button (click)="logout()" > Logout </button>
-       <a routerLink="/user/shops" routerLinkActive="active"> Favourite shops</a>
-   </nav>
+   <div *ngIf="loginService.isLoggedIn()">
+       <nav ><button (click)="logout()" > Logout </button>
+       <a routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
+       </nav>
+   </div>
+    <div *ngIf="!loginService.isLoggedIn()">
+    <nav><a style="text-align: right" routerLink="/login" routerLinkActive="active">Login</a> </nav>
+    </div>
+
 
 </div>
 <router-outlet></router-outlet>

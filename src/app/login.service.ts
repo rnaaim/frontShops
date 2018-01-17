@@ -33,12 +33,13 @@ export class LoginService {
 
       register(email:string,username:string,password:string,confirmPassword :string) {
 
-          let body = new HttpParams().set('_email', email);
-          body = body.set('_username', username);
-          body = body.set('_password', password);
-          body = body.set('_confirmPassword', confirmPassword);
+          let body = new HttpParams().set('email', email);
+          body = body.set('username', username);
+          body = body.set('password', password);
+          body = body.set('confirmPassword', confirmPassword);
           let headers = new HttpHeaders().append('Content-Type', 'application/x-www-form-urlencoded');
           console.log(body.toString())
+          console.log(headers)
           return this.http.post('http://localhost:8000/register', body.toString(), {headers: headers}).map(res => {
           return res});
 

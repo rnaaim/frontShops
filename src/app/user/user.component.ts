@@ -10,13 +10,22 @@ import {LoginService} from '../login.service';
 export class UserComponent implements OnInit {
     userShops = [];
     constructor( private shopService : ShopService,private loginService : LoginService) {
-
-        this.shopService.getUserShops().subscribe(data=> {
-            this.userShops = data['result'];
-            console.log(this.userShops);
-        });}
+}
 
   ngOnInit() {
+        this.start();
   }
 
+
+  start(){
+
+      this.shopService.getUserShops().subscribe(data=> {
+          this.userShops = data['result'];
+          console.log(this.userShops);
+      });
+  }
+
+  dislike(s){
+        this.shopService.dislikeShop(s);
+  }
 }

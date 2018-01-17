@@ -34,6 +34,14 @@ export class ShopService {
             console.log(data['message']);})
         }
 
+        dislikeShop(id) {
+        console.log(localStorage.getItem('refreshToken'))
+        let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
+        headers = headers.set('content-type', 'application/x-www-form-urlencoded');
+        console.log(headers);
+        return this.http.put(this.url + '/shop/dislike/' + id,JSON.stringify(id),{headers: headers}).subscribe(data => {
+            console.log(data['message']);})
+    }
 
 
-  }
+}

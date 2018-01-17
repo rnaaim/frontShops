@@ -12,6 +12,7 @@ import { RegisterComponent } from './register/register.component';
 import {HttpClientModule} from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {Myguard} from './authGuard';
+import {LocationService} from './location.service';
 
 const myRoutes : Routes = [{
   path : 'login',component : LoginComponent
@@ -40,7 +41,7 @@ const myRoutes : Routes = [{
     RouterModule.forRoot(myRoutes),
       HttpClientModule,FormsModule
   ],
-  providers: [LoginService, ShopService, Myguard
+  providers: [LoginService, ShopService, Myguard,LocationService
   ],
   bootstrap: [AppComponent]
 })
