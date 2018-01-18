@@ -4,6 +4,7 @@ import {HttpClient, HttpClientModule, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map'
 import {LoginService} from './login.service';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class ShopService {
@@ -16,13 +17,13 @@ export class ShopService {
   getShops() : Observable<Shop[]> {
       console.log(this.authService.token)
       let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
-      return this.http.get(this.url + '/shops',{headers: headers}).map(res => <Shop[]> res);
+      return this.http.get(this.url + '/shops',{headers: headers}).map(res => <Shop[]> res['result']);
   }
 
-    getUserShops() : Observable<Shop[]> {
+    getUserShops(){
 
         let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
-        return this.http.get(this.url + '/user/shops',{headers: headers}).map(res => <Shop[]> res);
+        return this.http.get(this.url + '/user/shops',{headers: headers}).map(res => <Shop[]> res['result']);
     }
 
     likeShop(id) {
@@ -31,7 +32,11 @@ export class ShopService {
         headers = headers.set('content-type', 'application/x-www-form-urlencoded');
       console.log(headers);
         return this.http.put(this.url + '/shop/like/' + id,JSON.stringify(id),{headers: headers}).subscribe(data => {
-            console.log(data['message']);})
+            console.log(data);
+     });
+
+
+
         }
 
         dislikeShop(id) {

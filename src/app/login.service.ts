@@ -47,8 +47,7 @@ export class LoginService {
 
     logout() : void{
         this.token = null;
-        localStorage.removeItem('refreshToken');
-        localStorage.removeItem('loggedUser');
+        localStorage.clear();
     }
 
     isLoggedIn() : boolean {
