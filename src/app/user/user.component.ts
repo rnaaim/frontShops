@@ -12,7 +12,9 @@ import {CommonModule} from '@angular/common';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-    public userShops$ : Shop[];
+    public userShops$ : Observable<Shop[]>;
+    path: string[] = ['distance'];
+    order: number = 1;
     constructor( private shopService : ShopService,private loginService : LoginService,private  changeRef : ChangeDetectorRef) {
 }
 
@@ -24,12 +26,12 @@ export class UserComponent implements OnInit {
 
   start(){
 
-      this.shopService.getUserShops().subscribe(data => {this.userShops$ = data;});
+      this.userShops$ = this.shopService.getUserShops();
       }
 
   dislike(s){
-        this.shopService.dislikeShop(s);
-        this.start();
+       this.shopService.dislikeShop(s);
+       this.start();
 
   }
 }

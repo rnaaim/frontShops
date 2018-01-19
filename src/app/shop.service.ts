@@ -20,7 +20,7 @@ export class ShopService {
       return this.http.get(this.url + '/shops',{headers: headers}).map(res => <Shop[]> res['result']);
   }
 
-    getUserShops(){
+    getUserShops() : Observable<Shop[]>{
 
         let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
         return this.http.get(this.url + '/user/shops',{headers: headers}).map(res => <Shop[]> res['result']);
@@ -39,7 +39,7 @@ export class ShopService {
 
         }
 
-        dislikeShop(id) {
+        dislikeShop(id){
         console.log(localStorage.getItem('refreshToken'))
         let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
         headers = headers.set('content-type', 'application/x-www-form-urlencoded');

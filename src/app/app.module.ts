@@ -13,6 +13,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {Myguard} from './authGuard';
 import {LocationService} from './location.service';
+import {SortingByDistancePipe} from './sortByDistance.pipe';
+import {MypipeModule} from './mypipe.module';
 
 const myRoutes : Routes = [{
   path : 'login',component : LoginComponent
@@ -39,7 +41,7 @@ const myRoutes : Routes = [{
   imports: [
     BrowserModule,
     RouterModule.forRoot(myRoutes),
-      HttpClientModule,FormsModule
+      HttpClientModule,FormsModule,MypipeModule.forRoot()
   ],
   providers: [LoginService, ShopService, Myguard,LocationService
   ],
