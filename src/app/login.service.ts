@@ -3,6 +3,8 @@ import {HttpClient, HttpClientModule, HttpHeaders, HttpParams,HttpResponse} from
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
+import {tokenNotExpired} from 'angular2-jwt';
+
 @Injectable()
 export class LoginService {
 
@@ -51,8 +53,10 @@ export class LoginService {
     }
 
     isLoggedIn() : boolean {
-        if((localStorage.getItem('loggedUser'))){
-            return true;
+        if((localStorage.getItem('loggedUser')) && !tokenNotExpired(localStorage.getItem('refreshToken'))){
+            {
+                return true;
+            }
         } else {
             return false;
         }
