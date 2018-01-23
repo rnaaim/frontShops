@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 export class LoginComponent implements OnInit {
     username : string;
     password : string;
-
+    error : string
   constructor( private authService : LoginService, private  router : Router) { }
 
   login(){
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
       this.authService.login(this.username,this.password).subscribe(data=>{
           console.log(data);
       this.router.navigate(['/shops']);
-      });
-      console.log("Yes it works");
+      }, loginerror => this.error ='Verify your username and password');
+
   }
 
   ngOnInit() {
