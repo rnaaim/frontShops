@@ -30,26 +30,28 @@ export class LoginService {
           } else{
               return false;
           }
-        });
+        }).catch((error : Response) => Observable.throw(error.json() || 'server error'));
     }
 
-      register(email:string,username:string,password:string,confirmPassword :string) {
+      register(email:string,username:string,password:string) : Observable<number>{
 
           let body = new HttpParams().set('email', email);
           body = body.set('username', username);
           body = body.set('password', password);
-          body = body.set('confirmPassword', confirmPassword);
           let headers = new HttpHeaders().append('Content-Type', 'application/x-www-form-urlencoded');
           console.log(body.toString())
           console.log(headers)
-          return this.http.post('http://localhost:8000/register', body.toString(), {headers: headers}).map(res => {
-          return res});
+          return this.http.post('http://localhost:8000/user/create', body.toString(), {headers: headers}).map(
+              (res : Response) => { return res}
+              )
+          .catch((error : Response) => Observable.throw(error.json() || 'server error'));
 
       }
 
     logout() : void{
         this.token = null;
-        localStorage.clear();
+        localStorage.removeItem('loggedUser');
+        localStorage.removeItem('refreshToken');
     }
 
     isLoggedIn() : boolean {
@@ -61,5 +63,8 @@ export class LoginService {
             return false;
         }
     }
+
+
+
 }
 
