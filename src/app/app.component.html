@@ -1,7 +1,7 @@
 <div class="jumbotron text-center">
     <h1>Welcome to the ultimate guide for shops in the entire galaxy</h1>
    <div *ngIf="loginService.isLoggedIn()">
-       <nav ><button (click)="logout()" > Logout </button>
+       <nav><button (click)="logout()" > Logout </button>
         <div  *ngIf="getCurrentPath() == '/shops'"><a routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
         </div>
            <div  *ngIf="getCurrentPath() == '/user/shops'"><a routerLink="/shops" routerLinkActive="active">All shops </a>

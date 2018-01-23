@@ -17,6 +17,7 @@ export class UserComponent implements OnInit {
     path: string[] = ['distance'];
     order: number = 1;
     myurl;
+    numberofshops : number
     constructor( private shopService : ShopService,private loginService : LoginService, private router : Router) {
 }
 
