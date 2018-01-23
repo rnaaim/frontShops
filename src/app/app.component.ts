@@ -8,9 +8,13 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'World';
+
   constructor( public loginService : LoginService,private router: Router){
 
+  }
+
+  getCurrentPath() : string{
+     return this.router.url;
   }
 
   logout(){

@@ -2,7 +2,10 @@
     <h1>Welcome to the ultimate guide for shops in the entire galaxy</h1>
    <div *ngIf="loginService.isLoggedIn()">
        <nav ><button (click)="logout()" > Logout </button>
-       <a  routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
+        <div  *ngIf="getCurrentPath() == '/shops'"><a routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
+        </div>
+           <div  *ngIf="getCurrentPath() == '/user/shops'"><a routerLink="/shops" routerLinkActive="active">All shops </a>
+           </div>
        </nav>
    </div>
     <div *ngIf="!loginService.isLoggedIn()">
@@ -11,4 +14,9 @@
 
 
 </div>
+<div class="container">
+    <div *ngIf="getCurrentPath() == '/' && !loginService.isLoggedIn()">
+     <h1>You need to logging to see all the shops you may like</h1>
+    </div>
+    </div>
 <router-outlet></router-outlet>

@@ -5,6 +5,7 @@ import {ChangeDetectorRef} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {Shop} from '../shop.model';
 import {CommonModule} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -15,12 +16,13 @@ export class UserComponent implements OnInit {
     public userShops : Shop[];
     path: string[] = ['distance'];
     order: number = 1;
-    constructor( private shopService : ShopService,private loginService : LoginService,private  changeRef : ChangeDetectorRef) {
+    myurl;
+    constructor( private shopService : ShopService,private loginService : LoginService, private router : Router) {
 }
 
   ngOnInit() {
-
         this.start();
+         this.myurl = this.router.url;
   }
 
 
