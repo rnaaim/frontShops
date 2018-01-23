@@ -5,7 +5,7 @@
       <div class="col-sm-12 col-md-10 col-md-offset-1">
         <form #registerForm = "ngForm" (ngSubmit)="register()" ngNativeValidate>
           <div class="form-group input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
 
             <input class="form-control" type="text" [(ngModel)] = "email" name='email' placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required />
           </div>

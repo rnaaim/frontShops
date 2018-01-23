@@ -16,7 +16,12 @@
 </div>
 <div class="container">
     <div *ngIf="getCurrentPath() == '/' && !loginService.isLoggedIn()">
-     <h1>You need to logging to see all the shops you may like</h1>
+     <h1>You need to log in to see shops you may like.</h1>
+    </div>
+    <div *ngIf="getCurrentPath() == '/' && loginService.isLoggedIn()">
+        <h1>Browse</h1>
+        <h2><a routerLink="/shops" routerLinkActive="active">All shops</a></h2>
+        <h2><a routerLink="/user/shops" routerLinkActive="active"> My favorite shops</a></h2>
     </div>
     </div>
 <router-outlet></router-outlet>
