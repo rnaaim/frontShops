@@ -2,7 +2,7 @@
     <h1>Welcome to the ultimate guide for shops in the entire galaxy</h1>
    <div *ngIf="loginService.isLoggedIn()">
        <nav ><button (click)="logout()" > Logout </button>
-       <a routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
+       <a  routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
        </nav>
    </div>
     <div *ngIf="!loginService.isLoggedIn()">

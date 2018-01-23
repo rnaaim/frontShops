@@ -17,13 +17,13 @@ export class ShopService {
   getShops() : Observable<Shop[]> {
       console.log(this.authService.token)
       let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
-      return this.http.get(this.url + '/shops',{headers: headers}).map(res => <Shop[]> res['result']);
+      return this.http.get(this.url + '/shops',{headers: headers}).map(res => <Shop[]> res['result']).catch((error : Response) => Observable.throw(error.json() || 'server error'));
   }
 
     getUserShops() : Observable<Shop[]>{
 
         let headers = new HttpHeaders().set('Authorization','Bearer ' + localStorage.getItem('refreshToken') );
-        return this.http.get(this.url + '/user/shops',{headers: headers}).map(res => <Shop[]> res['result']);
+        return this.http.get(this.url + '/user/shops',{headers: headers}).map(res => <Shop[]> res['result']).catch((error : Response) => Observable.throw(error.json() || 'server error'));
     }
 
     likeShop(id) {

@@ -7,6 +7,7 @@ import {element} from 'protractor';
 import {forEach} from '@angular/router/src/utils/collection';
 import {LocationService} from '../location.service';
 import {Observable} from 'rxjs/Observable';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-shop',
@@ -19,7 +20,7 @@ export class ShopComponent implements OnInit {
     path: string[] = ['distance'];
     order: number = 1;
 
-  constructor( private shopService : ShopService, private locationSerice : LocationService) {
+  constructor( private shopService : ShopService, private locationSerice : LocationService,private loginService: LoginService,private router : Router) {
 
       if(navigator.geolocation){
           navigator.geolocation.getCurrentPosition(position => {
@@ -30,8 +31,11 @@ export class ShopComponent implements OnInit {
   }
 
    like(s){
-      this.shopService.likeShop(s);
-
+      if(this.loginService.isLoggedIn()) {
+          this.shopService.likeShop(s);
+      } else{
+          this.router.navigate(['/login']);
+      }
    }
 
     dislike(s){

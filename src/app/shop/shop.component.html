@@ -1,6 +1,5 @@
 <div style="padding-left: 20px;padding-right: 20px" class="row">
   <div class="col-xs-18 col-sm-6 col-md-4" *ngFor="let shop of (myshops | sortDistance:path:order)">
-
     <div [ngStyle]= "isDisliked(shop['id'])" class="thumbnail img">
       <img src="{{shop['picture']}}" alt="" style="width:100%">
       <div class="caption center">
