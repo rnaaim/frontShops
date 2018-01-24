@@ -23,6 +23,10 @@ export class LoginComponent implements OnInit {
 
   }
 
+  checklogin(): boolean {
+        return this.authService.isLoggedIn();
+  }
+
   ngOnInit() {
 
   }

@@ -1,3 +1,10 @@
+<div *ngIf="checklogin()">
+  <h1> You are already logged in !</h1>
+  <h1>Browse</h1>
+  <h2><a routerLink="/shops" routerLinkActive="active">Nearby shops</a></h2>
+  <h2><a routerLink="/user/shops" routerLinkActive="active"> My favorite shops</a></h2>
+</div>
+<div *ngIf="!checklogin()">
 <div class="container">
   <div class="row">
     <div class="Absolute-Center is-Responsive">
@@ -24,4 +31,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>
