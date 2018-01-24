@@ -55,7 +55,9 @@ export class LoginService {
     }
 
     isLoggedIn() : boolean {
-        if((localStorage.getItem('loggedUser')) && !tokenNotExpired(localStorage.getItem('refreshToken'))){
+        //console.log(tokenNotExpired(localStorage.getItem('refreshToken')));
+        //console.log(localStorage.getItem('loggedUser'))
+        if((localStorage.getItem('loggedUser')) && tokenNotExpired(localStorage.getItem('refreshToken')) == false){
             {
                 return true;
             }

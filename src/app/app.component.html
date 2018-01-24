@@ -4,7 +4,7 @@
        <nav><button (click)="logout()" > Logout </button>
         <div  *ngIf="getCurrentPath() == '/shops'"><a routerLink="/user/shops" routerLinkActive="active">My favorite shops </a>
         </div>
-           <div  *ngIf="getCurrentPath() == '/user/shops'"><a routerLink="/shops" routerLinkActive="active">All shops </a>
+           <div  *ngIf="getCurrentPath() == '/user/shops'"><a routerLink="/shops" routerLinkActive="active">Nearby shops </a>
            </div>
        </nav>
    </div>
@@ -20,7 +20,7 @@
     </div>
     <div *ngIf="getCurrentPath() == '/' && loginService.isLoggedIn()">
         <h1>Browse</h1>
-        <h2><a routerLink="/shops" routerLinkActive="active">All shops</a></h2>
+        <h2><a routerLink="/shops" routerLinkActive="active">Nearby shops</a></h2>
         <h2><a routerLink="/user/shops" routerLinkActive="active"> My favorite shops</a></h2>
     </div>
     </div>
