@@ -1,6 +1,6 @@
 # Shops
 
-This the front end application of our backend https://github.com/rnaaim/myshops 
+This the frontend application of our backend application https://github.com/rnaaim/myshops 
 
 # Installation
 
